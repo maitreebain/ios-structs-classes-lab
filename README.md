@@ -24,9 +24,30 @@ fred.name = "Brick"
 fred.weight = 999.2
 fred.homePlanet = "Mars"
 ```
+```
+This will not run because homePlanet is a let constant, therefore the value is not able to be changed.
 
+```
 Fix the class definition for `Giant` in the space below so that it **does** work:
+```
+class Giant {
+ var name: String = "Fred"
+ var weight: Double = 340.0
+ let homePlanet: String = "Earth"
+}
 
+let fred = Giant()
+```
+```
+class Giant {
+ var name: String = "Fred"
+ var weight: Double = 340.0
+ var homePlanet: String = "Earth"
+}
+
+let fred = Giant()
+
+```
 
 ## Question 2
 
@@ -48,6 +69,10 @@ bilbo.name = "Jake"
 bilbo.height = 1.42
 bilbo.homePlanet = "Saturn"
 ```
+```
+This code will not run because you cannot re-assign values within a struct. 
+
+```
 
 Change the declaration of `bilbo` so that the above three lines of code **do** work:
 
@@ -65,6 +90,11 @@ jason.name = "Jason"
 
 What will the value of `edgar.name` be after those three lines of code are run? What will the value of `jason.name` be? Why?
 
+```
+edgar.name value will be polymorphed into the value of jason. Edgar's name would then be reassigned as "Jason", and Jason's name will also be Jason.
+
+```
+
 
 ## Question 4
 
@@ -78,6 +108,10 @@ charlesFromJupiter.homePlanet = "Jupiter"
 
 What will the value of `charles.homePlanet` be after the above code run? What about the value of `charlesFromJupiter.homePlanet`? Why?
 
+```
+charlesFromJupiter.homePlanet will be assigned the value of "Jupiter" and this is able to be done because the values are a copy of the struct therefore able to be changed. charles.homePlanet is still Plutom since that value can still be called from the copy, becuase the value of "Jupiter" had not been added yet.
+
+```
 
 ## Question 5
 
@@ -99,8 +133,25 @@ struct BankAccount {
 ```
 
 Does this code work? Why or why not?
-
+```
+This code does not work because the functions are not able to be mutated. 
+```
 Fix the `BankAccount` struct so it does work.
+
+```
+struct BankAccount {
+ var owner: String
+ var balance: Double
+
+ mutating func deposit(_ amount: Double) {
+ balance += amount
+ }
+
+ mutating func withdraw(_ amount: Double) {
+ balance -= amount
+ }
+}
+```
 
 Given the code below (which should incorporate any fixes you made):
 
