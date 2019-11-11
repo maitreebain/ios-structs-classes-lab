@@ -95,7 +95,6 @@ edgar.name value will be polymorphed into the value of jason. Edgar's name would
 
 ```
 
-
 ## Question 4
 
 Given this bit of code that uses the `Alien` struct:
@@ -109,7 +108,7 @@ charlesFromJupiter.homePlanet = "Jupiter"
 What will the value of `charles.homePlanet` be after the above code run? What about the value of `charlesFromJupiter.homePlanet`? Why?
 
 ```
-charlesFromJupiter.homePlanet will be assigned the value of "Jupiter" and this is able to be done because the values are a copy of the struct therefore able to be changed. charles.homePlanet is still Plutom since that value can still be called from the copy, becuase the value of "Jupiter" had not been added yet.
+charlesFromJupiter.homePlanet will be assigned the value of "Jupiter" and this is able to be done because the values are a copy of the struct therefore able to be changed. charles.homePlanet is still Pluto since that value can still be called from the copy, becuase the value of "Jupiter" had not been added yet.
 
 ```
 
@@ -162,12 +161,36 @@ joeAccount.withdraw(50.0)
 ```
 
 What will the value of `joeAccount.balance` be after the above code runs? What about the value of `joeOtherAccount.balance`? Why?
+```
+joeAccount.balance would be 50.0 since the "50.0" was taken away from the original instance. joeOtherAccount.balance would remain to be 100 since it made a copy of the original balance value and nothing was withdrawn from it.
+```
 
 
 ## Question 6
 
 a. Write a struct called `Person` that has 3 properties of type `String`: a first name, a last name and a middle name. Have the middle name be optional. Create 2 instances of a `Person`, one with a middle name and one without. Print one of their first names.
 
+```
+struct Person {
+    var firstName: String
+    var middleName: String?
+    var lastName: String
+
+    static func firstName() {
+        var firstNameArray = [String]()
+        for name in firstNameArray{
+            firstNameArray.append(name)
+            firstNameArray.randomElement()
+        }
+    }
+}
+
+let firstInstance = Person(firstName: "Monica", middleName: nil, lastName: "Geller")
+let secondInstance = Person(firstName: "Rachel", middleName: "Karen", lastName: "Greene")
+
+print(Person.firstName())
+
+```
 
 b. Write a method in `Person` called `fullName` that will return a formatted string of an instance's full name. Call this method on both the instances you created in part a.
 
@@ -176,10 +199,42 @@ b. Write a method in `Person` called `fullName` that will return a formatted str
 
 a. Create a struct called `Book` that has properties `title`, `author` and `rating`, of type `String`, `String`, and `Double` respectively. Create some instances of `Book`.
 
+```
+struct Book {
+    var title: String
+    var author: String
+    var rating: Double
 
+    }
+}
+
+var bookOne = Book(title: "Ender's Game", author: "Orson Scott Card", rating: 8)
+var bookTwo = Book(title: "The Great Gatsby", author: "F. Scott Fitzgerald", rating: 8.5)
+
+bookOne.isGood()
+
+```
 b. Add a method to `Book` called `isGood` that returns `true` if its rating is greater than or equal to 7
 
+```
+struct Book {
+    var title: String
+    var author: String
+    var rating: Double
+    
+    func isGood() -> Bool{
+        if rating >= 7{
+            return true
+        }
+        return false
+    }
+}
 
+var bookOne = Book(title: "Ender's Game", author: "Orson Scott Card", rating: 8)
+var bookTwo = Book(title: "The Great Gatsby", author: "F. Scott Fitzgerald", rating: 8.5)
+
+bookOne.isGood()
+```
 ## Question 8
 
 ```swift
